@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel - Smart Door Lock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Control Your Door</h1>
+        <button id="open-btn">Open Door</button>
+        <button id="close-btn">Close Door</button>
+        <p><a href="login.html">Logout</a></p>
+    </div>
+    <script>
+        document.getElementById('open-btn').addEventListener('click', () => {
+            fetch('control.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'open' })
+            });
+        });
+
+        document.getElementById('close-btn').addEventListener('click', () => {
+            fetch('control.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'close' })
+            });
+        });
+    </script>
+</body>
+</html>
